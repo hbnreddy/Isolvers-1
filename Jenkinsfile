@@ -5,7 +5,13 @@ pipeline {
       stage("CheckOut-SCM"){
           steps{
                       cleanWs()
-                      checkout([$class: 'GitSCM',branches: [[name: '*/master']],doGenerateSubmoduleConfigurations: false,extensions: [],submoduleCfg: [],userRemoteConfigs: [[credentialsId: '861a346a-a5a0-4d80-91f5-610cb23f2710',url: 'https://github.com/kishore31b/Isolvers.git']]])
+                      checkout([$class: 'GitSCM',
+                                branches: [[name: '*/master']]
+                                ,doGenerateSubmoduleConfigurations: false,
+                                extensions: [],
+                                submoduleCfg: [],
+                                userRemoteConfigs: [[credentialsId: '861a346a-a5a0-4d80-91f5-610cb23f2710',
+                                                     url: 'https://github.com/kishore31b/Isolvers.git']]])
                 }
                      }
        stage("Build"){
@@ -28,7 +34,13 @@ pipeline {
             
             stage ("Testing"){
                 steps{
-                    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '861a346a-a5a0-4d80-91f5-610cb23f2710', url: 'https://github.com/kishore31b/Testing.git']]])
+                    checkout([$class: 'GitSCM', 
+                              branches: [[name: '*/master']], 
+                              doGenerateSubmoduleConfigurations: false, 
+                              extensions: [],
+                              submoduleCfg: [], 
+                               userRemoteConfigs: [[credentialsId: '861a346a-a5a0-4d80-91f5-610cb23f2710', 
+                                                    url: 'https://github.com/kishore31b/Testing.git']]])
                    sh 'java -jar  /var/lib/jenkins/workspace/pipline/testing.jar'
                 }
             }
@@ -51,10 +63,14 @@ pipeline {
   }
             post {
         success {  // notify users when the Pipeline is successful
-            mail(to: 'harireddy090@gmail.com', subject: "Pipeline Complete: ${currentBuild.fullDisplayName}", body: "Was successfully deployed. ${env.BUILD_URL}")
+            mail(to: 'harireddy090@gmail.com', 
+                 subject: "Pipeline Complete: ${currentBuild.fullDisplayName}",
+                 body: "Was successfully deployed. ${env.BUILD_URL}")
         }
         failure {  // notify users when the Pipeline fails
-            mail(to: 'harireddy090@gmail.com', subject: "Failed Pipeline: ${currentBuild.fullDisplayName}", body: "Something is wrong with ${env.BUILD_URL}")  
+            mail(to: 'harireddy090@gmail.com', 
+                 subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+                 body: "Something is wrong with ${env.BUILD_URL}")  
         }
      
      }        
