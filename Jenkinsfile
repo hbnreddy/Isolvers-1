@@ -31,7 +31,7 @@ pipeline {
              sh label: '', script: 'scp /var/jenkins_home/workspace/demo/webapp/target/webapp.war ubuntu@172.31.47.148:/var/lib/tomcat9/webapps/app1.war'
                    }
              }
-     stage('upload') {
+     stage('uploading artifacts to Jfrog artfactory') {
            steps {
               script { 
                  def server = Artifactory.server 'Artifactory-1'
