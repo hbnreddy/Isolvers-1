@@ -28,7 +28,7 @@ pipeline {
             
             stage("deploying to appServer"){
            steps{
-             sh label: '', script: 'scp /var/jenkins_home/workspace/demo/webapp/target/webapp.war ubuntu@172.31.26.148:/var/lib/tomcat9/webapps/app.war'
+             sh label: '', script: 'scp /var/jenkins_home/workspace/demo/webapp/target/webapp.war ubuntu@172.31.26.148:/var/lib/tomcat9/webapps/app1.war'
                    }
              }
       
