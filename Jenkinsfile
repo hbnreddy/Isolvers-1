@@ -31,6 +31,22 @@ pipeline {
              sh label: '', script: 'scp /var/jenkins_home/workspace/demo/webapp/target/webapp.war ubuntu@172.31.26.148:/var/lib/tomcat9/webapps/app1.war'
                    }
              }
+     stage('upload') {
+           steps {
+              script { 
+                 def server = Artifactory.server 'Artifactory-1'
+                 def uploadSpec = """{ 
+                   "files": [{
+                       "pattern": "**/*.war",
+                       "target": "jfrog-release-artifactory"
+                       
+                    }]
+                 }"""
+                 
+                 server.upload(uploadSpec) 
+            }
+       }
+     }
       
      
      }        
