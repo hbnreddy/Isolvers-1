@@ -28,7 +28,7 @@ pipeline {
             
             stage("deploying to appServer"){
            steps{
-             sh label: '', script: 'scp /var/jenkins_home/workspace/demo/webapp/target/webapp.war ubuntu@https://github.com/HariReddy910/Isolvers-1.git:/var/lib/tomcat9/webapps/app1.war'
+             sh label: '', script: 'scp /var/jenkins_home/workspace/Game-of-life/webapp/target/webapp.war ubuntu@https://github.com/HariReddy910/Isolvers-1.git:/var/lib/tomcat9/webapps/app1.war'
                    }
              }
      stage('uploading artifacts to Jfrog artfactory') {
