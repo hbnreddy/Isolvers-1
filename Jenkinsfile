@@ -10,7 +10,7 @@ pipeline {
                                 doGenerateSubmoduleConfigurations: false,
                                 extensions: [],
                                 submoduleCfg: [],
-                                userRemoteConfigs: [[credentialsId: '861a346a-a5a0-4d80-91f5-610cb23f2710',
+                                userRemoteConfigs: [[credentialsId: 'harireddy910_gitHUB',
                                 url: 'https://github.com/HariReddy910/Isolvers-1.git']]])
                 }
                      }
